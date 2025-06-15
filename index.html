@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vital Monitor</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+       
+    </script>
+</head>
+<body>
+    <header>
+        <h1 id="headerTitle">Vital Monitor</h1>
+        <a href="#" id="homeLink" class="home-link">Home</a>
+        <a href="#" id="backLink" class="home-link" style="display: none;" onclick="goBack()">Back</a>
+    </header>
+
+    <main>
+        <div class="container" id="homePage">
+            <h2>Welcome to Your Health Monitoring System</h2>
+            <p>Monitor your health metrics with ease and get actionable insights.</p>
+            <button onclick="showMainPage()">Get Started</button>
+        </div>
+
+        <div class="container" id="mainPage" style="display: none;">
+            <!-- Step 1 -->
+            <div class="slide" id="slide1">
+                <h2>Step 1: Enter Your Age and Gender</h2>
+                <div class="metric">
+                    <label for="ageInput">Age:</label>
+                    <input type="number" id="ageInput" placeholder="Enter your age" min="0">
+                    <p class="error-message" id="ageError" style="display: none;">Please enter a valid age.</p>
+                </div>
+                <div class="metric">
+                    <label for="genderInput">Gender:</label>
+                    <select id="genderInput">
+                        <option value="">Select gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                    <p class="error-message" id="genderError" style="display: none;">Please select a gender.</p>
+                </div>
+                <button class="next" onclick="validateSlide1()">Next</button>
+            </div>
+
+            <div class="slide" id="slide2" style="display: none;">
+                <h2>Step 2: Enter Heart Rate and Blood Pressure</h2>
+                <div class="metric">
+                    <label for="heartRateInput">Heart Rate (bpm):</label>
+                    <input type="number" id="heartRateInput" placeholder="Enter heart rate" min="0">
+                    <p class="error-message" id="heartRateError" style="display: none;">Please enter a valid heart rate.</p>
+                </div>
+                <div class="metric">
+                    <label for="bloodPressureInput">Blood Pressure (mmHg):</label>
+                    <input type="text" id="bloodPressureInput" placeholder="Enter blood pressure (e.g., 120/80)">
+                    <p class="error-message" id="bloodPressureError" style="display: none;">Please enter a valid blood pressure (e.g., 120/80).</p>
+                </div>
+                <button class="prev" onclick="prevSlide(0)">Previous</button>
+                <button class="next" onclick="validateSlide2()">Next</button>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="slide" id="slide3" style="display: none;">
+                <h2>Step 3: Enter Body Temperature</h2>
+                <div class="metric">
+                    <label for="temperatureInput">Body Temperature:</label>
+                    <input type="number" id="temperatureInput" placeholder="Enter temperature" step="0.1" min="30">
+                    <select id="temperatureUnit">
+                        <option value="Celsius">Celsius (°C)</option>
+                        <option value="Fahrenheit">Fahrenheit (°F)</option>
+                    </select>
+                    <p class="error-message" id="temperatureError" style="display: none;">Please enter a valid temperature.</p>
+                </div>
+                <button class="prev" onclick="prevSlide(1)">Previous</button>
+                <button class="next" onclick="validateSlide3()">Next</button>
+            </div>
+
+            
+            <div class="slide" id="slide4" style="display: none;">
+                <h2>Results</h2>
+                <div class="result">
+                    <p id="heartRateDisplay">Heart Rate: -- bpm</p>
+                    <p id="bloodPressureDisplay">Blood Pressure: -- mmHg</p>
+                    <p id="temperatureDisplay">Temperature: -- °C</p>
+                    <p id="alertMessage">Click "Check Health" to evaluate.</p>
+                </div>
+                <div id="recommendedTests" class="tests">
+                    <p>Recommended Tests:</p>
+                    <ul id="testsList"></ul>
+                </div>
+                <button class="prev" onclick="prevSlide(2)">Previous</button>
+                <button id="checkHealth" onclick="checkHealth()">Check Health</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Vital Monitor</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
